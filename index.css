@@ -443,12 +443,15 @@ body:not(.user-is-tabbing) a:focus {
 .work__box {
     display: flex;
     align-items: center;
+    justify-content: space-between; /* Ensures columns stay separated */
+    gap: var(--gutter-medium); /* Replaces the hardcoded margin */
 }
 
 @media(max-width: 900px) {
     .work__box {
         align-items: initial;
         flex-direction: column-reverse;
+        gap: var(--gutter-normal);
     }
 }
 
@@ -468,11 +471,10 @@ body:not(.user-is-tabbing) a:focus {
 }
 
 .work__text {
-    flex: 0 0 30%;
+    flex: 0 0 35%; /* Widened slightly so text doesn't look squished */
 }
 
 .work__list {
-    /* list-style-type: square; */
     list-style-position: inside;
     margin-bottom: var(--gutter-normal);
 }
@@ -495,7 +497,10 @@ body:not(.user-is-tabbing) a:focus {
 @media(min-width: 901px) {
     .work__image-box {
         flex: 1;
-        margin: 0 0 0 10rem;
+        display: flex;
+        justify-content: center; /* Centers the tall mobile image */
+        align-items: center;     /* Vertically aligns image with text block */
+        margin: 0; /* Removed the hardcoded 10rem margin */
     }
 }
 
