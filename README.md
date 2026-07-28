@@ -22,7 +22,7 @@ Welcome to my personal portfolio website built with **HTML, CSS, and a little Ja
 I’m **Muhammad Roshaan**, a CS undergraduate from SSUET Karachi. I love turning data into stories and dashboards. This portfolio reflects my journey as an aspiring **Data Analyst**, currently seeking internships or junior analyst opportunities.
 
  Location: Karachi, Pakistan  
-📧 Email: muhammadroshaan1127@gmail.com  
+📧 Email: muhammadroshaan1127@gmail.com • Open for opportunities  
 🔗 [LinkedIn](https://www.linkedin.com/in/muhammad-roshaan-024ab2288/)  
 🔗 [GitHub](https://github.com/MRoshaan)
 
