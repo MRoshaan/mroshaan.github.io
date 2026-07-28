@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muhammad Roshaan Portfolio</title>
+  <meta name="description" content="Portfolio of Muhammad Roshaan - Data Analytics Projects and Resume.">
+  <link rel="stylesheet" href="index.css" />
+  <link rel="icon" type="image/x-icon" href="./images/logo2.jpeg">
+</head>
+
+<body>
+
+  <header class="header" role="banner" id="top">
+    <div class="row">
+      <nav class="nav" role="navigation">
+        <ul class="nav__items">
+          <li class="nav__item"><a href="#work" class="nav__link">Work</a></li>
+          <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+          <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="header__text-box row">
+      <div class="header__text">
+        <h1 class="heading-primary"><span>Muhammad Roshaan</span></h1>
+        <p>Python Developer | FastAPI | Flutter | SQL | Power BI | Data Analysis & Backend Development</p>
+        <a href="#contact" class="btn btn--pink">Get in Touch</a>
+      </div>
+    </div>
+  </header>
+
+  <main role="main">
+    <section class="work" id="work">
+      <div class="row">
+        <h2>My Projects</h2>
+        <div class="work__boxes">
+
+          <div class="work__box">
+            <div class="work__text">
+              <h3>SeatVault (High-Concurrency Ticketing API)</h3>
+              <p>
+                Enterprise-grade flash-sale and ticketing platform with distributed Redis locks, Celery workers, and real-time seat state management to prevent double-booking under heavy load.
+              </p>
+              <ul class="work__list">
+                <li>FastAPI</li>
+                <li>MySQL</li>
+                <li>Redis</li>
+                <li>RabbitMQ</li>
+                <li>Celery</li>
+                <li>Docker</li>
+              </ul>
+              <div class="work__links">
+                <a href="https://github.com/MRoshaan/SeatVault" target="_blank" class="link__text">
+                  View Project <span>&rarr;</span>
+                </a>
+              </div>
+            </div>
+            <div class="work__image-box">
+              <img src="./images/seatvault.png" class="work__image" alt="SeatVault Ticketing Platform" />
+            </div>
+          </div>
+
+          <div class="work__box">
+            <div class="work__text">
+              <h3>BooknScore (Offline-First Mobile App)</h3>
+              <p>
+                A professional-grade cricket scoring application built for Android. Features an offline-first SQLite scoring engine, dynamic UI theming, and real-time community scorecard syncing to the cloud.
+              </p>
+              <ul class="work__list">
+                <li>Flutter</li>
+                <li>Supabase</li>
+                <li>SQLite</li>
+                <li>Provider</li>
+              </ul>
+              <div class="work__links">
+                <a href="https://github.com/MRoshaan/BooknScore" target="_blank" class="link__text">
+                  View Project <span>&rarr;</span>
+                </a>
+              </div>
+            </div>
+            <div class="work__image-box">
+              <img src="./images/booknscore.png" class="work__image" alt="BooknScore Mobile App" style="max-height: 420px; width: auto;" />
+            </div>
+          </div>
+
+          <div class="work__box">
+            <div class="work__text">
+              <h3>FlashSale Concurrency Engine</h3>
+              <p>
+                High-concurrency backend API that prevents inventory overselling during flash sales. Implements ACID transactions and Pessimistic Locking (SELECT FOR UPDATE) to solve database race conditions.
+              </p>
+              <ul class="work__list">
+                <li>FastAPI</li>
+                <li>MySQL</li>
+                <li>SQLAlchemy</li>
+                <li>Threading</li>
+              </ul>
+              <div class="work__links">
+                <a href="https://github.com/MRoshaan/flashsale-concurrency-engine" target="_blank" class="link__text">
+                  View Project <span>&rarr;</span>
+                </a>
+              </div>
+            </div>
+            <div class="work__image-box">
+              <img src="./images/flashsale.png" class="work__image" alt="FlashSale Engine Project" />
+            </div>
+          </div>
+
+          <div class="work__box">
+            <div class="work__text">
+              <h3>Netflix Content Analysis</h3>
+              <p>
+                Analyzed Netflix's catalog using Python (Pandas, Seaborn) to uncover insights about content trends, genres, and ratings.
+              </p>
+              <ul class="work__list">
+                <li>Python</li>
+                <li>Pandas</li>
+                <li>Seaborn</li>
+              </ul>
+              <div class="work__links">
+                <a href="https://github.com/MRoshaan/Netflix-Content-Analysis" target="_blank" class="link__text">
+                  View Project <span>&rarr;</span>
+                </a>
+              </div>
+            </div>
+            <div class="work__image-box">
+              <img src="./images/netflix.png" class="work__image" alt="Netflix Content Dashboard" style="width: 200px; height: auto;" />
+            </div>
+          </div>
+
+          <div class="work__box">
+            <div class="work__text">
+              <h3>FastAPI Book Manager API</h3>
+              <p>
+                Developed a high-performance RESTful API for book management (CRUD operations).
+                Integrated with MySQL using SQLAlchemy ORM and utilized Pydantic for data validation.
+              </p>
+              <ul class="work__list">
+                <li>FastAPI</li>
+                <li>SQLAlchemy</li>
+                <li>MySQL</li>
+              </ul>
+              <div class="work__links">
+                <a href="https://github.com/MRoshaan/fastapi-book-api" target="_blank" class="link__text">
+                  View Project <span>&rarr;</span>
+                </a>
+              </div>
+            </div>
+            <div class="work__image-box">
+              <img src="./images/fastapi.png" class="work__image" alt="FastAPI Project" />
+            </div>
+          </div>
+
+          <div class="work__box">
+            <div class="work__text">
+              <h3>Shopping Mall Sales Dashboard</h3>
+              <p>
+                Power BI dashboard showing revenue breakdown by age group, gender, payment method, and location.
+              </p>
+              <ul class="work__list">
+                <li>Power BI</li>
+                <li>Excel</li>
+              </ul>
+              <div class="work__links">
+                <a href="https://github.com/MRoshaan/Shopping-Mall-Sales-Customer-Insights---Power-BI-Dashboard" target="_blank" class="link__text">
+                  View Project <span>&rarr;</span>
+                </a>
+              </div>
+            </div>
+            <div class="work__image-box">
+              <img src="./images/mall.png" alt="Shopping Mall Dashboard" />
+            </div>
+          </div>
+
+          <div class="work__box">
+            <div class="work__text">
+              <h3>Sales Analysis Dashboard</h3>
+              <p>
+                A dynamic Power BI dashboard analyzing sales performance, product-wise revenue, and regional breakdown.
+              </p>
+              <ul class="work__list">
+                <li>Power BI</li>
+                <li>Excel</li>
+              </ul>
+              <div class="work__links">
+                <a href="https://github.com/MRoshaan/Sales-Analysis-PowerBI" target="_blank" class="link__text">
+                  View Project <span>&rarr;</span>
+                </a>
+              </div>
+            </div>
+            <div class="work__image-box">
+              <img src="./images/Dataprof.png" class="work__image" alt="Sales Analysis Dashboard" />
+            </div>
+          </div>
+
+          <div class="work__box">
+            <div class="work__text">
+              <h3>Movie Ticket Booking System</h3>
+              <p>
+                Developed a desktop-based ticket booking system using Python (Tkinter) and MySQL. Handles seat booking, movie listings, and user data storage.
+              </p>
+              <ul class="work__list">
+                <li>Python</li>
+                <li>MySQL</li>
+                <li>Tkinter</li>
+              </ul>
+              <div class="work__links">
+                <a href="https://github.com/MRoshaan/movie-ticket-booking-system" target="_blank" class="link__text">
+                  View Project <span>&rarr;</span>
+                </a>
+              </div>
+            </div>
+            <div class="work__image-box">
+              <img src="./images/ticket.png" class="work__image" alt="Ticket Booking System" />
+            </div>
+          </div>
+
+          <div class="work__box">
+            <div class="work__text">
+              <h3>Sentiment Trends & Social Media Analysis</h3>
+              <p>
+                An interactive Power BI dashboard visualizing emotional trends, popular hashtags, and user engagement by sentiment across social platforms. Built using cleaned Excel data and custom DAX metrics.
+              </p>
+              <ul class="work__list">
+                <li>Power BI</li>
+                <li>DAX</li>
+                <li>Excel</li>
+              </ul>
+              <div class="work__links">
+                <a href="https://github.com/MRoshaan/social-sentiment" target="_blank" class="link__text">
+                  View Project <span>&rarr;</span>
+                </a>
+              </div>
+            </div>
+            <div class="work__image-box">
+              <img src="./images/sentiment.png" class="work__image" alt="Sentiment Dashboard" />
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="row">
+        <h2>About Me</h2>
+        <div class="about__content">
+          <div class="about__text">
+            <p>
+              Hi, I’m Muhammad Roshaan a Computer Science 3rd year student with hands-on experience in backend development and data analytics. Skilled in 
+              FastAPI, Python, SQL, MySQL/MongoDB, and Power BI. Seeking an internship or junior role to contribute to 
+              backend or data-driven projects while gaining industry experience.
+            </p>
+            <a href="./Resume/Muhammad_Roshaan_Resume.pdf" class="btn" download="Muhammad_Roshaan_Resume.pdf">Download Resume</a>
+          </div>
+          <div class="about__photo-container">
+            <img class="about__photo" src="./images/picture.jpg" alt="Roshaan" />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class="contact" id="contact">
+    <div class="row">
+      <h2>Contact</h2>
+      <div class="contact__info">
+        <p>Feel free to reach out for collaboration, opportunities, or just to say hello.</p>
+        <a href="mailto:muhammadroshaan1127@gmail.com" class="btn">muhammadroshaan1127@gmail.com</a>
+      </div>
+    </div>
+  </section>
+  <footer role="contentinfo" class="footer">
+    <div class="row">
+      <ul class="footer__social-links">
+        <li class="footer__social-link-item">
+          <a href="https://github.com/MRoshaan" target="_blank">
+            <img src="./images/github.svg" class="footer__social-image" alt="GitHub">
+          </a>
+        </li>
+        <li class="footer__social-link-item">
+          <a href="mailto:muhammadroshaan1127@gmail.com" target="_blank">
+            <img src="./images/email.png" class="footer__social-image" alt="email">
+          </a>
+        </li>
+        <li class="footer__social-link-item">
+          <a href="https://www.linkedin.com/in/muhammad-roshaan-024ab2288/" target="_blank">
+            <img src="./images/linkedin.svg" class="footer__social-image" alt="LinkedIn">
+          </a>
+        </li>
+      </ul>
+
+      <p>© 2026 Muhammad Roshaan. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
