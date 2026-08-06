@@ -11,7 +11,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://mroshaan.vercel.app"),
+  metadataBase: new URL("https://roshaan-portfolio.vercel.app"),
   title: {
     default: `${site.name} — Backend & Data Engineer`,
     template: `%s — ${site.name}`,
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: `${site.name} — Backend & Data Engineer`,
     description:
       "Backend & Data Engineer, final-year CS student. Proved by building systems, not slides.",
-    url: "https://mroshaan.vercel.app",
+    url: "https://roshaan-portfolio.vercel.app",
     siteName: site.name,
     type: "website",
   },
