@@ -1,34 +1,64 @@
-# Muhammad Roshaan -  Portfolio 
+# Muhammad Roshaan — Portfolio
 
-Welcome to my personal portfolio website built with **HTML, CSS, and a little JavaScript** — designed to showcase my data analytics projects and experience.
+Dark-first, high-contrast portfolio for Muhammad Roshaan, a backend & data
+engineer and final-year CS student at SSUET, Karachi.
 
-🔗 **Live Portfolio:** [mroshaan.github.io](https://mroshaan.github.io)
+## Stack
 
-##  Projects Included
+- **Next.js 16** (App Router, Turbopack) + **TypeScript**
+- **Tailwind CSS v4** design system (`app/globals.css` theme tokens)
+- **shadcn/ui** components copied into `components/ui/` (button, card, badge,
+  separator, command menu) — not installed as a black-box package
+- **Framer Motion** — used only for the scroll/storytelling moments (hero
+  entrance, the SeatVault and ETL diagrams). No GSAP/Lenis.
 
--  **Netflix Content Analysis** – Python (Pandas + Seaborn)
--  **Shopping Mall Sales Dashboard** – Power BI + Excel
--  **Sales Performance Dashboard** – Power BI + Excel
--  **Movie Ticket Booking System** – Python + MySQL + Tkinter
--  **Sentiment Trends Dashboard** – Power BI + DAX + Excel
+## Structure
 
-##  Tech Used
+```
+app/
+  layout.tsx            Global layout, nav, metadata, fonts
+  page.tsx               Landing: hero → projects → skills → experience → footer
+  projects/[slug]/       Case-study pages (one per featured project)
+  globals.css            Design tokens (colors, grid backdrop, scrollbar)
+components/
+  ui/                    shadcn-style primitives (button, card, badge, command menu)
+  diagrams/              Framer Motion architecture diagrams (seatvault, etl)
+  nav/hero/footer/...    Page sections
+lib/
+  site.ts                Contact + URLs (single source for the site)
+  projects.ts            Project content (problem / approach / outcomes)
+  skills.ts              Skill groups
+public/
+  resume/Muhammad_Roshaan_Resume.pdf   Downloadable resume (see "Resume" below)
+```
 
-- **Frontend:** HTML, CSS, JavaScript
-- **Analytics Tools:** Power BI, Excel, SQL, Python (Pandas, Matplotlib, Seaborn)
+> `legacy-static/` holds the old static HTML portfolio for reference.
 
-##  About
+## Resume
 
-I’m **Muhammad Roshaan**, a CS undergraduate from SSUET Karachi. I love turning data into stories and dashboards. This portfolio reflects my journey as an aspiring **Data Analyst**, currently seeking internships or junior analyst opportunities.
+The downloadable resume is a plain PDF at
+`public/resume/Muhammad_Roshaan_Resume.pdf` (kept in `Resume/`). The Hero
+button, footer, and `/resume/...` links all point to it. To update it, drop a
+new PDF into `public/resume/Muhammad_Roshaan_Resume.pdf` and rebuild.
 
- Location: Karachi, Pakistan  
-📧 Email: muhammadroshaan1127@gmail.com • Open for opportunities  
-🔗 [LinkedIn](https://www.linkedin.com/in/muhammad-roshaan-024ab2288/)  
-🔗 [GitHub](https://github.com/MRoshaan)
-
-## ⚙️ How to Use Locally
+## Local dev
 
 ```bash
-git clone https://github.com/MRoshaan/mroshaan.github.io
-cd mroshaan.github.io
-# Open index.html in browser
+npm install
+npm run dev        # http://localhost:3000
+```
+
+## Checks
+
+```bash
+npm run typecheck  # tsc --noEmit
+npm run lint       # eslint
+npm run build      # production build (static-prerenders all routes)
+```
+
+## Deploy (Vercel)
+
+1. Push this directory to a Git repo and import it in
+   [Vercel](https://vercel.com/new) (framework: Next.js — no config required).
+2. Every push to `main` auto-deploys. Update the `metadataBase` / `openGraph`
+   URLs in `app/layout.tsx` to the real domain after the first deploy.
