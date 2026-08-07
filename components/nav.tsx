@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "@/components/theme-provider";
 import { CommandMenu } from "@/components/ui/command-menu";
 import { cn } from "@/lib/utils";
 
@@ -14,6 +16,7 @@ const links = [
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const { theme, toggle } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -32,7 +35,6 @@ export function Nav() {
       )}
     >
       <div className="relative">
-        {/* top accent hairline */}
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
         <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
           <Link href="/#top" className="group flex items-center gap-2.5">
@@ -44,19 +46,30 @@ export function Nav() {
             </span>
           </Link>
 
-          <div className="hidden items-center gap-8 md:flex">
-            {links.map((l) => (
-              <a
-                key={l.label}
-                href={l.href}
-                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-              >
-                {l.label}
-              </a>
-            ))}
-          </div>
+          <div className="flex items-center gap-6">
+            <div className="hidden items-center gap-8 md:flex">
+              {links.map((l) => (
+                <a
+                  key={l.label}
+                  href={l.href}
+                  className="text-sm text-muted-foreground transition-colors hover:text-accent"
+                >
+                  {l.label}
+                </a>
+              ))}
+            </div>
 
-          <CommandMenu />
+            <button
+              type="button"
+              onClick={toggle}
+              aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+              className="grid size-9 place-items-center rounded-md border border-border bg-card text-muted-foreground transition-colors hover:text-accent"
+            >
+              {theme === "dark" ? <Sun className="size-4" /> : <Moon className="size-4" />}
+            </button>
+
+            <CommandMenu />
+          </div>
         </nav>
       </div>
     </header>

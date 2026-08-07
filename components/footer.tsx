@@ -13,7 +13,7 @@ export function Footer() {
   return (
     <section id="contact" className="relative overflow-hidden py-28">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[680px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(31,111,74,0.18),transparent)] blur-3xl" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[680px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(197,0,0,0.14),transparent)] blur-3xl" />
 
       <div className="relative mx-auto max-w-3xl px-6 text-center">
         <p className="eyebrow mb-4 flex items-center justify-center gap-3 text-accent">

@@ -69,13 +69,13 @@ function Node({
     tone === "accent"
       ? "border-accent/60"
       : tone === "ok"
-      ? "border-emerald-500/60"
+      ? "border-accent/60"
       : "border-border";
   const dot =
     tone === "accent"
       ? "bg-accent"
       : tone === "ok"
-      ? "bg-emerald-400"
+      ? "bg-accent"
       : tone === "muted"
       ? "bg-muted-foreground/50"
       : "bg-muted-foreground";
@@ -106,11 +106,11 @@ function Branch({
       <div className="grid grid-cols-2 gap-3">
         <div
           className={`rounded-lg border ${
-            ok.tone === "ok" ? "border-emerald-500/60" : "border-border"
+            ok.tone === "ok" ? "border-accent/60" : "border-border"
           } bg-card px-4 py-3`}
         >
-          <p className="flex items-center gap-2 text-sm font-semibold text-emerald-400">
-            <span className="size-1.5 rounded-full bg-emerald-400" />
+          <p className="flex items-center gap-2 text-sm font-semibold text-accent">
+            <span className="size-1.5 rounded-full bg-accent" />
             {ok.title}
           </p>
           <p className="ml-3.5 mt-0.5 font-mono text-xs text-muted-foreground">{ok.sub}</p>

@@ -36,7 +36,7 @@ export default async function ProjectPage({
   return (
     <article className="relative mx-auto max-w-4xl overflow-hidden px-6 py-20 md:py-28">
       {/* ambient glow */}
-      <div className="pointer-events-none absolute -top-40 left-1/2 h-[420px] w-[680px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(31,111,74,0.2),transparent)] blur-3xl" />
+      <div className="pointer-events-none absolute -top-40 left-1/2 h-[420px] w-[680px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(197,0,0,0.14),transparent)] blur-3xl" />
 
       <div className="relative">
         {/* back */}
