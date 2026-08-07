@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { Mail, FileText, ArrowUpRight } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
 import { site } from "@/lib/site";
+import { TextEffect } from "@/components/ui/text-effect";
+import { GradientAccent } from "@/components/ui/gradient-accent";
 
 const fade = (delay: number) => ({
   initial: { opacity: 0, y: 16 },
@@ -35,9 +37,22 @@ export function Hero() {
             {...fade(0.08)}
             className="display text-5xl font-bold leading-[1.04] tracking-tight sm:text-6xl lg:text-7xl"
           >
-            Backend data,
+            <GradientAccent
+              className="from-accent to-accent-hover"
+              tones="from-accent to-accent-hover"
+            >
+              Backend&nbsp;data,
+            </GradientAccent>
             <br />
-            engineered to ship.
+            <TextEffect
+              as="span"
+              per="word"
+              preset="slide"
+              delay={0.5}
+              className="block"
+            >
+              engineered to ship.
+            </TextEffect>
           </motion.h1>
 
           <motion.p

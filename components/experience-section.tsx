@@ -1,5 +1,6 @@
 import { SectionHeading } from "@/components/projects-section";
 import { Badge } from "@/components/ui/badge";
+import { AnimatedGroup } from "@/components/ui/animated-group";
 
 const experience = [
   {
@@ -32,34 +33,36 @@ export function ExperienceSection() {
           <span className="pointer-events-none absolute right-6 top-6 font-mono text-xs text-muted-foreground/40">
             APR—JUN 2026
           </span>
-          {experience.map((e) => (
-            <div key={e.org}>
-              <div className="flex flex-wrap items-baseline justify-between gap-2">
-                <h3 className="display text-2xl font-semibold">
-                  {e.role}{" "}
-                  <span className="text-accent">@ {e.org}</span>
-                </h3>
+          <AnimatedGroup preset="slide">
+            {experience.map((e) => (
+              <div key={e.org}>
+                <div className="flex flex-wrap items-baseline justify-between gap-2">
+                  <h3 className="display text-2xl font-semibold">
+                    {e.role}{" "}
+                    <span className="text-accent">@ {e.org}</span>
+                  </h3>
+                </div>
+                <p className="mt-1 font-mono text-sm text-muted-foreground">
+                  {e.program} · {e.location}
+                </p>
+                <ul className="mt-6 grid gap-3 sm:grid-cols-1">
+                  {e.bullets.map((b) => (
+                    <li key={b} className="flex gap-3 leading-relaxed text-[color:var(--copy)]">
+                      <span className="mt-[9px] size-1 shrink-0 rounded-full bg-accent" />
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-7 flex flex-wrap gap-1.5">
+                  {e.stack.map((t) => (
+                    <Badge key={t} variant="secondary" className="border-border">
+                      {t}
+                    </Badge>
+                  ))}
+                </div>
               </div>
-              <p className="mt-1 font-mono text-sm text-muted-foreground">
-                {e.program} · {e.location}
-              </p>
-              <ul className="mt-6 grid gap-3 sm:grid-cols-1">
-                {e.bullets.map((b) => (
-                  <li key={b} className="flex gap-3 leading-relaxed text-[color:var(--copy)]">
-                    <span className="mt-[9px] size-1 shrink-0 rounded-full bg-accent" />
-                    <span>{b}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-7 flex flex-wrap gap-1.5">
-                {e.stack.map((t) => (
-                  <Badge key={t} variant="secondary" className="border-border">
-                    {t}
-                  </Badge>
-                ))}
-              </div>
-            </div>
-          ))}
+            ))}
+          </AnimatedGroup>
         </div>
       </div>
     </section>

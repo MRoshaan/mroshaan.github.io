@@ -1,6 +1,7 @@
 import { skillGroups } from "@/lib/skills";
 import { SectionHeading } from "@/components/projects-section";
 import { Badge } from "@/components/ui/badge";
+import { AnimatedGroup } from "@/components/ui/animated-group";
 
 export function SkillsSection() {
   return (
@@ -12,7 +13,7 @@ export function SkillsSection() {
           title="The stack I reach for"
           blurb="Languages, frameworks, and runtimes, grouped by where they earn their keep in my work."
         />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <AnimatedGroup preset="slide" className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {skillGroups.map((g, i) => (
             <div
               key={g.title}
@@ -34,7 +35,7 @@ export function SkillsSection() {
               </div>
             </div>
           ))}
-        </div>
+        </AnimatedGroup>
       </div>
     </section>
   );
