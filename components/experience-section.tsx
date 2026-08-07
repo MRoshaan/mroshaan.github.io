@@ -4,9 +4,8 @@ import { Badge } from "@/components/ui/badge";
 const experience = [
   {
     role: "Data Science Intern",
-    company: "Data Science Intern",
-    org: "10Pearls Pakistan (NASTP)",
-    program: "10P Shine Internship Program",
+    org: "10Pearls Pakistan",
+    program: "10P Shine Internship Program · NASTP",
     period: "Apr 2026 – Jun 2026",
     location: "Remote",
     stack: ["Python", "Pandas", "NumPy", "scikit-learn", "XGBoost", "LightGBM", "Hopsworks", "Jupyter"],
@@ -20,43 +19,41 @@ const experience = [
 
 export function ExperienceSection() {
   return (
-    <section id="experience" className="border-b border-border py-24">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="experience" className="border-b border-border py-28">
+      <div className="mx-auto max-w-6xl px-6 lg:px-8">
         <SectionHeading
           index="03"
-          title="Experience"
-          blurb="Where I've applied this in a structured setting."
+          eyebrow="Path"
+          title="Where it's being applied"
+          blurb="A structured setting to turn what YouTube-style learning into something repeatable."
         />
-        <div className="space-y-6">
+
+        <div className="panel relative overflow-hidden p-6 sm:p-8">
+          <span className="pointer-events-none absolute right-6 top-6 font-mono text-xs text-muted-foreground/40">
+            APR—JUN 2026
+          </span>
           {experience.map((e) => (
-            <div
-              key={e.org + e.period}
-              className="rounded-xl border border-border bg-card p-6"
-            >
-              <div className="flex flex-wrap items-start justify-between gap-2">
-                <div>
-                  <h3 className="text-lg font-semibold">
-                    Data Science Intern <span className="text-accent">@ 10Pearls Pakistan</span>
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    10P Shine Internship Program · Remote
-                  </p>
-                </div>
-                <span className="font-mono text-sm text-muted-foreground">
-                  Apr 2026 – Jun 2026
-                </span>
+            <div key={e.org}>
+              <div className="flex flex-wrap items-baseline justify-between gap-2">
+                <h3 className="display text-2xl font-semibold">
+                  {e.role}{" "}
+                  <span className="text-accent">@ {e.org}</span>
+                </h3>
               </div>
-              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+              <p className="mt-1 font-mono text-sm text-muted-foreground">
+                {e.program} · {e.location}
+              </p>
+              <ul className="mt-6 grid gap-3 sm:grid-cols-1">
                 {e.bullets.map((b) => (
-                  <li key={b} className="flex gap-2">
-                    <span className="mt-2 size-1 shrink-0 rounded-full bg-accent" />
+                  <li key={b} className="flex gap-3 leading-relaxed text-[color:var(--copy)]">
+                    <span className="mt-[9px] size-1 shrink-0 rounded-full bg-accent" />
                     <span>{b}</span>
                   </li>
                 ))}
               </ul>
-              <div className="mt-5 flex flex-wrap gap-1.5">
+              <div className="mt-7 flex flex-wrap gap-1.5">
                 {e.stack.map((t) => (
-                  <Badge key={t} variant="secondary">
+                  <Badge key={t} variant="secondary" className="border-border">
                     {t}
                   </Badge>
                 ))}

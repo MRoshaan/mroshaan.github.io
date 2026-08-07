@@ -1,77 +1,132 @@
 @import "tailwindcss";
 
 :root {
-  --background: #07090b;
-  --foreground: #e6edf3;
-  --card: #0c1116;
-  --card-foreground: #e6edf3;
-  --muted: #141a21;
-  --muted-foreground: #8b98a5;
-  --border: #1c2733;
-  --accent: #34d399;
-  --accent-100: #6ee7b7;
-  --accent-foreground: #052e1c;
-  --ring: #34d399;
+  /* surfaces — deep, warm-neutral, near-black */
+  --background: #07090a;
+  --surface: #0c0f11;
+  --card: #0e1215;
+  --panel: #11161a;
+  --muted: #161c21;
+
+  /* ink */
+  --foreground: #e9eef1;
+  --copy: #cdd6dc;
+  --muted-foreground: #8f9ba6;
+
+  /* lines & accents */
+  --border: #1c242c;
+  --border-strong: #27313b;
+  --accent: #6fe0a5;
+  --accent-100: #9beec2;
+  --accent-600: #1f6f4a;
+  --accent-foreground: #062a1b;
+  --ring: #6fe0a5;
   --navy: #1f4e79;
-  --grid-line: rgba(139, 152, 165, 0.08);
+
+  --grid-line: rgba(143, 154, 165, 0.055);
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
+  --color-card-foreground: var(--foreground);
+  --color-panel: var(--panel);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
   --color-accent: var(--accent);
   --color-accent-100: var(--accent-100);
   --color-accent-foreground: var(--accent-foreground);
   --color-ring: var(--ring);
   --color-navy: var(--navy);
   --font-sans: var(--font-inter);
+  --font-display: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, "SF Mono", monospace;
 }
 
+/* ---------- base ---------- */
 * {
   border-color: var(--border);
 }
 
 html {
   scroll-behavior: smooth;
+  background: var(--background);
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
+  background-image: var(--grain);
   color: var(--foreground);
-  font-family: var(--font-sans);
+  font-family: var(--font-inter);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "cv11", "ss01";
 }
 
 ::selection {
-  background: rgba(52, 211, 153, 0.25);
-  color: #ffffff;
+  background: rgba(85, 224, 165, 0.22);
+  color: #fff;
 }
 
-/* thin scrollbar */
+/* ---------- scrollbar ---------- */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: var(--background);
 }
 ::-webkit-scrollbar-thumb {
-  background: #27303b;
+  background: #212a31;
   border-radius: 9999px;
+  border: 2px solid var(--background);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #33404f;
+  background: #2e3941;
 }
 
-/* subtle grid backdrop for hero */
-.bg-grid {
+/* ---------- utilities ---------- */
+.display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.rule-hair {
+  background: linear-gradient(
+    90deg,
+    var(--border-strong),
+    transparent 85%
+  );
+}
+
+.bg-grid-soft {
   background-image:
     linear-gradient(var(--grid-line) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-  background-size: 56px 56px;
+  background-size: 64px 64px;
+}
+
+.panel {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.03),
+    0 20px 50px -30px rgba(0, 0, 0, 0.7);
+}
+
+.glow-accent {
+  box-shadow: 0 0 0 1px rgba(85, 224, 165, 0.18),
+    0 20px 60px -35px rgba(85, 224, 165, 0.35);
 }

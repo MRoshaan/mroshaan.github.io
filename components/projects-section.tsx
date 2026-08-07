@@ -4,18 +4,57 @@ import { projects, type Project } from "@/lib/projects";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
+export function SectionHeading({
+  index,
+  eyebrow,
+  title,
+  blurb,
+  align,
+}: {
+  index: string;
+  eyebrow: string;
+  title: string;
+  blurb?: string;
+  align?: "left" | "center";
+}) {
+  const centered = align === "center";
+  return (
+    <div className={`mb-14 ${centered ? "text-center" : ""}`}>
+      <p className="eyebrow mb-3 flex items-center gap-3 text-accent">
+        {!centered && <span className="h-px w-8 bg-accent/50" />}
+        {index} — {eyebrow}
+        {centered && <span className="h-px w-8 bg-accent/50" />}
+      </p>
+      <h2 className="display text-3xl font-semibold tracking-tight sm:text-4xl">
+        {title}
+      </h2>
+      {blurb && (
+        <p
+          className={`mt-4 max-w-2xl leading-relaxed text-muted-foreground ${
+            centered ? "mx-auto" : ""
+          }`}
+        >
+          {blurb}
+        </p>
+      )}
+    </div>
+  );
+}
+
 export function ProjectsSection() {
   return (
-    <section id="projects" className="border-b border-border py-24">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="projects" className="border-b border-border py-28">
+      <div className="mx-auto max-w-6xl px-6 lg:px-8">
         <SectionHeading
           index="01"
-          title="Featured Projects"
-          blurb="Systems built for correctness under load. Each has a case-study page."
+          eyebrow="Selected work"
+          title="Systems, chosen to explain themselves"
+          blurb="Case studies over links. Each project has a page walking through the problem, the approach, and what actually changed."
         />
-        <div className="grid gap-6 md:grid-cols-2">
+
+        <div className="grid gap-5 md:grid-cols-2">
           {projects.map((p, i) => (
-            <ProjectCard key={p.slug} project={p} featured={i < 4} />
+            <ProjectCard key={p.slug} project={p} i={i} />
           ))}
         </div>
       </div>
@@ -23,40 +62,41 @@ export function ProjectsSection() {
   );
 }
 
-function ProjectCard({
-  project,
-  featured,
-}: {
-  project: Project;
-  featured: boolean;
-}) {
+function ProjectCard({ project, i }: { project: Project; i: number }) {
+  const hero = i < 2;
   return (
     <Link
       href={`/projects/${project.slug}`}
-      className={`group relative block overflow-hidden rounded-xl border border-border bg-card transition-colors hover:border-accent/40 ${
-        featured ? "md:col-span-1" : ""
+      className={`group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-[0_30px_60px_-35px_rgba(0,0,0,0.8)] ${
+        hero ? "md:col-span-1" : ""
       }`}
     >
-      <div className="absolute inset-0 bg-[radial-gradient(600px_circle_at_var(--x,50%)_-10%,rgba(52,211,153,0.08),transparent_60%)] opacity-0 transition-opacity group-hover:opacity-100" />
-      <Card className="h-full border-0 bg-transparent shadow-none">
-        <CardHeader className="border-b border-border/60">
+      {/* hover accent wash */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-accent/[0.07] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+      <Card className="flex h-full flex-col border-0 bg-transparent shadow-none">
+        <CardHeader className="border-b border-border/70">
           <div className="flex items-center justify-between">
-            <CardTitle className="font-mono text-sm text-accent">
+            <span className="font-mono text-xs text-muted-foreground">
+              {String(i + 1).padStart(2, "0")}
+              <span className="text-border-strong"> / </span>
               {project.category}
-            </CardTitle>
-            <ArrowUpRight className="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent" />
+            </span>
+            <span className="grid size-7 place-items-center rounded-md border border-border text-muted-foreground transition-all group-hover:border-accent/50 group-hover:text-accent">
+              <ArrowUpRight className="size-3.5" />
+            </span>
           </div>
-          <CardTitle className="mt-2 text-2xl font-bold">
+          <CardTitle className="display mt-4 text-2xl font-semibold tracking-tight">
             {project.name}
           </CardTitle>
-          <CardDescription className="text-base leading-relaxed">
+          <CardDescription className="leading-relaxed text-[color:var(--copy)]">
             {project.summary}
           </CardDescription>
         </CardHeader>
-        <CardContent className="pt-5">
+        <CardContent className="mt-auto pt-5">
           <div className="flex flex-wrap gap-1.5">
             {project.stack.map((t) => (
-              <Badge key={t} variant="secondary">
+              <Badge key={t} variant="secondary" className="border-border">
                 {t}
               </Badge>
             ))}
@@ -64,26 +104,5 @@ function ProjectCard({
         </CardContent>
       </Card>
     </Link>
-  );
-}
-
-export function SectionHeading({
-  index,
-  title,
-  blurb,
-}: {
-  index: string;
-  title: string;
-  blurb?: string;
-}) {
-  return (
-    <div className="mb-12">
-      <p className="mb-2 font-mono text-sm text-accent">/{index}</p>
-      <h2 className="flex items-center gap-4 text-3xl font-bold sm:text-4xl">
-        {title}
-        <span className="h-px flex-1 bg-border" />
-      </h2>
-      {blurb && <p className="mt-3 max-w-2xl text-muted-foreground">{blurb}</p>}
-    </div>
   );
 }
