@@ -35,7 +35,6 @@ export function Nav() {
       )}
     >
       <div className="relative">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
         <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
           <Link href="/#top" className="group flex items-center gap-2.5">
             <span className="grid size-8 place-items-center rounded-lg border border-border bg-card font-mono text-[13px] font-semibold text-accent transition-colors group-hover:border-accent/50">

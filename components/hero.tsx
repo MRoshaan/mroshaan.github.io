@@ -27,8 +27,7 @@ export function Hero() {
       <div className="relative mx-auto grid max-w-6xl gap-14 px-6 py-24 md:grid-cols-[1.2fr_0.8fr] md:items-center md:py-32 lg:px-8">
         {/* copy */}
         <div className="max-w-3xl">
-          <motion.p {...fade(0)} className="eyebrow mb-6 flex items-center gap-3 text-accent">
-            <span className="h-px w-10 bg-accent/60" />
+          <motion.p {...fade(0)} className="eyebrow mb-6 text-accent">
             Muhammad Roshaan · Backend &amp; Data Engineer
           </motion.p>
 

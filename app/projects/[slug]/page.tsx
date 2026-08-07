@@ -51,8 +51,7 @@ export default async function ProjectPage({
         {/* header */}
         <header className="mt-10 border-b border-border pb-10">
           <div className="flex flex-wrap items-center justify-between gap-4">
-            <p className="eyebrow flex items-center gap-3 text-accent">
-              <span className="h-px w-8 bg-accent/50" />
+            <p className="eyebrow text-accent">
               Case study — {project.category}
             </p>
             <a
@@ -85,8 +84,7 @@ export default async function ProjectPage({
         {/* diagram */}
         {project.diagram && (
           <section className="mt-12">
-            <h2 className="eyebrow mb-4 flex items-center gap-3 text-muted-foreground">
-              <span className="h-px w-8 bg-accent/50" />
+            <h2 className="eyebrow mb-4 text-muted-foreground">
               How it works
             </h2>
             {project.diagram === "seatvault" ? (

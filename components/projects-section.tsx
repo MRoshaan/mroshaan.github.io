@@ -21,9 +21,7 @@ export function SectionHeading({
   return (
     <div className={`mb-14 ${centered ? "text-center" : ""}`}>
       <p className="eyebrow mb-3 flex items-center gap-3 text-accent">
-        {!centered && <span className="h-px w-8 bg-accent/50" />}
         {index} — {eyebrow}
-        {centered && <span className="h-px w-8 bg-accent/50" />}
       </p>
       <h2 className="display text-3xl font-semibold tracking-tight sm:text-4xl">
         {title}
