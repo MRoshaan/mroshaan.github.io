@@ -22,11 +22,9 @@ export function useTheme() {
 
 function getInitialTheme(): Theme {
   if (typeof window === "undefined") return "light";
+  // Default to light unless the user has explicitly chosen dark.
   const saved = localStorage.getItem("theme");
-  return saved === "dark" ||
-    (!saved && window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ? "dark"
-    : "light";
+  return saved === "dark" ? "dark" : "light";
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {

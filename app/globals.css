@@ -158,3 +158,27 @@ body {
   box-shadow: 0 0 0 1px rgba(197, 0, 0, 0.16),
     0 24px 64px -38px rgba(197, 0, 0, 0.35);
 }
+
+/* ---------- marquee ---------- */
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee-scroll 30s linear infinite;
+}
+
+.marquee-mask {
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+}
