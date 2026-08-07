@@ -10,7 +10,7 @@ export function SkillsSection() {
           index="02"
           eyebrow="Capabilities"
           title="The stack I reach for"
-          blurb="Languages, frameworks, and runtimes — grouped by where they earn their keep in my work."
+          blurb="Languages, frameworks, and runtimes, grouped by where they earn their keep in my work."
         />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {skillGroups.map((g, i) => (
