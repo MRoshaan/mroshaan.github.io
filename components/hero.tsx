@@ -44,7 +44,7 @@ export function Hero() {
             {...fade(0.16)}
             className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground"
           >
-            Final-year CS at SSUET building systems that survive contention — distributed
+            Final-year CS at SSUET building systems that survive contention: distributed
             locks, ETL pipelines at 540K+ rows, and real-time ML inference you can audit.
           </motion.p>
 
