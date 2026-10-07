@@ -21,23 +21,29 @@ export function EducationSection() {
 
         {/* education */}
         <div className="panel relative overflow-hidden p-6 sm:p-8">
-          <span className="pointer-events-none absolute right-6 top-6 font-mono text-xs text-muted-foreground/40">
-            {education.period.toUpperCase()}
-          </span>
-
           <div className="flex items-start gap-4">
             <span className="grid size-10 shrink-0 place-items-center rounded-lg border border-border bg-muted/50 text-accent">
               <GraduationCap className="size-5" />
             </span>
             <div>
-              <h3 className="display text-2xl font-semibold">
+              <h3 className="display text-xl font-semibold text-pretty sm:text-2xl">
                 {education.institution}
               </h3>
-              <p className="mt-1 font-mono text-sm text-muted-foreground">
-                {education.degree} · {education.location}
-              </p>
-              <p className="mt-1 text-sm text-muted-foreground">
-                {education.detail}
+              <div className="mt-1 flex flex-col gap-0.5 font-mono text-sm text-muted-foreground sm:flex-row sm:items-center sm:gap-2">
+                <span>{education.degree}</span>
+                <span className="hidden sm:inline">·</span>
+                <span>{education.location}</span>
+              </div>
+              <div className="mt-1 flex flex-col gap-0.5 text-xs text-muted-foreground sm:flex-row sm:flex-wrap sm:items-center sm:gap-2 sm:text-sm">
+                {education.details.map((item, i) => (
+                  <span key={item} className="flex items-center gap-2">
+                    {i > 0 && <span className="hidden sm:inline">·</span>}
+                    {item}
+                  </span>
+                ))}
+              </div>
+              <p className="mt-1.5 font-mono text-xs text-muted-foreground/60">
+                {education.period}
               </p>
             </div>
           </div>

@@ -64,15 +64,15 @@ export function ExperienceSection() {
         <AnimatedGroup preset="slide" className="space-y-6">
           {experience.map((e) => (
             <div key={`${e.role}-${e.org}`} className="panel relative overflow-hidden p-6 sm:p-8">
-              <span className="pointer-events-none absolute right-6 top-6 font-mono text-xs text-muted-foreground/40">
-                {e.period.toUpperCase()}
-              </span>
-              <div className="flex flex-wrap items-baseline justify-between gap-2">
-                <h3 className="display text-2xl font-semibold">
+              <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
+                <h3 className="display text-2xl font-semibold leading-snug">
                   {e.role} <span className="text-accent">@ {e.org}</span>
                 </h3>
+                <span className="font-mono text-xs text-muted-foreground/60">
+                  {e.period}
+                </span>
               </div>
-              <p className="mt-1 font-mono text-sm text-muted-foreground">
+              <p className="mt-1.5 font-mono text-sm text-muted-foreground">
                 {e.program} · {e.location}
               </p>
               <ul className="mt-6 grid gap-3 sm:grid-cols-1">

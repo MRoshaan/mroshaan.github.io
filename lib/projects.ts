@@ -127,7 +127,7 @@ export const projects: Project[] = [
       "React",
     ],
     repo: "https://github.com/MRoshaan/safetyshield",
-    category: "AI Safety · Final Year Project",
+    category: "AI Safety · FYP",
     status: "Registered · design stage",
     problem:
       "Testing an AI system for unsafe behavior normally takes hundreds or thousands of repeated prompt evaluations. That cost puts careful safety testing out of reach for smaller teams and projects.",

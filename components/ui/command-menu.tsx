@@ -70,7 +70,7 @@ export function CommandMenu() {
       <Dialog.Trigger asChild>
         <button
           type="button"
-          className="inline-flex h-9 items-center gap-2 rounded-md border border-border bg-muted/40 px-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
+          className="inline-flex h-10 items-center gap-2 rounded-md border border-border bg-muted/40 px-3 text-sm text-muted-foreground transition-colors hover:text-foreground sm:h-9"
           aria-label="Open command menu"
         >
           <Search className="size-4" />

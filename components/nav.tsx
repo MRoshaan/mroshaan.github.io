@@ -5,16 +5,9 @@ import Link from "next/link";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
 import { CommandMenu } from "@/components/ui/command-menu";
+import { MobileMenu } from "@/components/mobile-menu";
+import { navLinks } from "@/lib/nav";
 import { cn } from "@/lib/utils";
-
-const links = [
-  { label: "Research", href: "/#research" },
-  { label: "Work", href: "/#projects" },
-  { label: "Skills", href: "/#skills" },
-  { label: "Experience", href: "/#experience" },
-  { label: "Education", href: "/#education" },
-  { label: "Contact", href: "/#contact" },
-];
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -42,14 +35,14 @@ export function Nav() {
             <span className="grid size-8 place-items-center rounded-lg border border-border bg-card font-mono text-[13px] font-semibold text-accent transition-colors group-hover:border-accent/50">
               MR
             </span>
-            <span className="text-sm font-medium tracking-tight text-foreground">
+            <span className="hidden text-sm font-medium tracking-tight text-foreground sm:inline">
               Muhammad Roshaan
             </span>
           </Link>
 
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-3 sm:gap-6">
             <div className="hidden items-center gap-8 md:flex">
-              {links.map((l) => (
+              {navLinks.map((l) => (
                 <a
                   key={l.label}
                   href={l.href}
@@ -64,12 +57,13 @@ export function Nav() {
               type="button"
               onClick={toggle}
               aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-              className="grid size-9 place-items-center rounded-md border border-border bg-card text-muted-foreground transition-colors hover:text-accent"
+              className="grid size-10 place-items-center rounded-md border border-border bg-card text-muted-foreground transition-colors hover:text-accent sm:size-9"
             >
               {theme === "dark" ? <Sun className="size-4" /> : <Moon className="size-4" />}
             </button>
 
             <CommandMenu />
+            <MobileMenu />
           </div>
         </nav>
       </div>

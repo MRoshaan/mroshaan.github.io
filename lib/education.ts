@@ -10,7 +10,7 @@ export const education = {
   institution: "Sir Syed University of Engineering & Technology",
   location: "Karachi, Pakistan",
   degree: "BS Computer Science",
-  detail: "Batch 2023F · Roll No 2023F-BCS-311 · Regular (Morning)",
+  details: ["Batch 2023F", "Roll No 2023F-BCS-311", "Regular (Morning)"],
   period: "Sep 2023 - Jul 2027",
   status: "Final year · 7th semester in progress",
   cgpa: "3.80 / 4.00",

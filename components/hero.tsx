@@ -30,12 +30,13 @@ export function Hero() {
         {/* copy */}
         <div className="max-w-3xl">
           <motion.p {...fade(0)} className="eyebrow mb-6 text-accent">
-            Muhammad Roshaan · AI Safety &amp; Systems Engineer
+            <span className="max-sm:hidden">Muhammad Roshaan · </span>
+            AI Safety &amp; Systems Engineer
           </motion.p>
 
           <motion.h1
             {...fade(0.08)}
-            className="display text-5xl font-bold leading-[1.04] tracking-tight sm:text-6xl lg:text-7xl"
+            className="display text-[2.75rem] font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl"
           >
             <GradientAccent
               className="from-accent to-accent-hover"
@@ -64,25 +65,28 @@ export function Hero() {
             systems that hold under contention.
           </motion.p>
 
-          <motion.div {...fade(0.24)} className="mt-9 flex flex-wrap items-center gap-3">
+          <motion.div
+            {...fade(0.24)}
+            className="mt-9 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:items-center"
+          >
             <a
               href={site.github}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex h-11 items-center gap-2 rounded-lg bg-accent px-5 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent-hover"
+              className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-accent px-4 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent-hover sm:justify-start sm:px-5"
             >
               <GithubIcon className="size-4" /> GitHub
             </a>
             <a
               href={site.resume}
               target="_blank"
-              className="inline-flex h-11 items-center gap-2 rounded-lg border border-border bg-card px-5 text-sm font-medium text-foreground transition-colors hover:border-accent/60 hover:text-accent"
+              className="inline-flex h-11 items-center justify-center gap-2 rounded-lg border border-border bg-card px-4 text-sm font-medium text-foreground transition-colors hover:border-accent/60 hover:text-accent sm:justify-start sm:px-5"
             >
               <FileText className="size-4" /> Résumé
             </a>
             <a
               href={`mailto:${site.email}`}
-              className="inline-flex h-11 items-center gap-2 rounded-lg px-3 text-sm text-muted-foreground transition-colors hover:text-accent"
+              className="inline-flex h-11 items-center justify-center gap-2 rounded-lg border border-border bg-card px-4 text-sm text-muted-foreground transition-colors hover:border-accent/50 hover:text-accent sm:border-0 sm:bg-transparent sm:px-3"
             >
               <Mail className="size-4" /> Email
             </a>
@@ -90,7 +94,7 @@ export function Hero() {
               href={site.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex h-11 items-center gap-2 rounded-lg px-3 text-sm text-muted-foreground transition-colors hover:text-accent"
+              className="inline-flex h-11 items-center justify-center gap-2 rounded-lg border border-border bg-card px-4 text-sm text-muted-foreground transition-colors hover:border-accent/50 hover:text-accent sm:border-0 sm:bg-transparent sm:px-3"
             >
               <LinkedinIcon className="size-4" /> LinkedIn
             </a>
