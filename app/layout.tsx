@@ -24,19 +24,19 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://roshaanportfolio.vercel.app"),
+  metadataBase: new URL("https://m-roshaan.me"),
   title: {
-    default: `${site.name} · Backend & Data Engineer`,
+    default: `${site.name} · AI Safety & Systems Engineer`,
     template: `%s · ${site.name}`,
   },
   description:
-    "Muhammad Roshaan — Backend & Data Engineer and final-year CS student. Systems design in distributed systems, ETL, and real-time ML inference.",
+    "Muhammad Roshaan, AI safety and systems engineer in Karachi. Accepted NeurIPS 2026 workshop papers on LLM evaluation, plus concurrency and data systems built to hold under load.",
   icons: { icon: "/favicon.jpeg" },
   openGraph: {
-    title: `${site.name} · Backend & Data Engineer`,
+    title: `${site.name} · AI Safety & Systems Engineer`,
     description:
-      "Backend & Data Engineer, final-year CS student. Proved by building systems, not slides.",
-    url: "https://roshaanportfolio.vercel.app",
+      "AI safety and systems engineering. Published LLM evaluation research and backend systems built to hold under load.",
+    url: "https://m-roshaan.me",
     siteName: site.name,
     type: "website",
   },

@@ -1,14 +1,17 @@
-# Muhammad Roshaan — Portfolio
-Dark-first, high-contrast portfolio for Muhammad Roshaan, a backend & data
-engineer and final-year CS student at SSUET, Karachi.
+# Muhammad Roshaan Portfolio
+
+Dark-first, high-contrast portfolio for Muhammad Roshaan, an AI safety and
+systems engineer and final-year CS student at SSUET, Karachi. Research leads:
+accepted NeurIPS 2026 workshop papers on LLM tool-calling reliability and agent
+security, followed by systems work in concurrency, ETL, and real-time ML.
 
 ## Stack
 
 - **Next.js 16** (App Router, Turbopack) + **TypeScript**
 - **Tailwind CSS v4** design system (`app/globals.css` theme tokens)
 - **shadcn/ui** components copied into `components/ui/` (button, card, badge,
-  separator, command menu) — not installed as a black-box package
-- **Framer Motion** — used only for the scroll/storytelling moments (hero
+  separator, command menu), not installed as a black-box package
+- **Framer Motion**: used only for the scroll/storytelling moments (hero
   entrance, the SeatVault and ETL diagrams). No GSAP/Lenis.
 
 ## Structure
@@ -16,29 +19,32 @@ engineer and final-year CS student at SSUET, Karachi.
 ```
 app/
   layout.tsx            Global layout, nav, metadata, fonts
-  page.tsx               Landing: hero → projects → skills → experience → footer
-  projects/[slug]/       Case-study pages (one per featured project)
-  globals.css            Design tokens (colors, grid backdrop, scrollbar)
+  page.tsx              Landing: hero → research → projects → skills → experience → education → footer
+  projects/[slug]/      Case-study pages (one per featured project)
+  globals.css           Design tokens (colors, grid backdrop, scrollbar)
 components/
-  ui/                    shadcn-style primitives (button, card, badge, command menu)
-  diagrams/              Framer Motion architecture diagrams (seatvault, etl)
-  nav/hero/footer/...    Page sections
+  ui/                   shadcn-style primitives (button, card, badge, command menu)
+  diagrams/             Framer Motion architecture diagrams (seatvault, etl)
+  nav/hero/footer/...   Page sections, including research and education
 lib/
-  site.ts                Contact + URLs (single source for the site)
-  projects.ts            Project content (problem / approach / outcomes)
-  skills.ts              Skill groups
+  site.ts               Contact + URLs (single source for the site)
+  research.ts           Papers, venues, findings, and the reviewer role
+  projects.ts           Featured case studies + compact "more on GitHub" list
+  education.ts          Degree, semester GPAs, certifications, languages
+  skills.ts             Skill groups
 public/
-  resume/Muhammad_Roshaan_Resume.pdf   Downloadable resume (see "Resume" below)
+  resume/Muhammad_Roshaan_Resume.pdf   Downloadable resume
 ```
 
-> `legacy-static/` holds the old static HTML portfolio for reference.
+> `legacy-static/` and `Resume/` hold the old static HTML portfolio for reference.
 
 ## Resume
 
 The downloadable resume is a plain PDF at
-`public/resume/Muhammad_Roshaan_Resume.pdf` (kept in `Resume/`). The Hero
-button, footer, and `/resume/...` links all point to it. To update it, drop a
-new PDF into `public/resume/Muhammad_Roshaan_Resume.pdf` and rebuild.
+`public/resume/Muhammad_Roshaan_Resume.pdf`. The Hero button, footer, and
+`/resume/...` links all point to it. The source LaTeX lives in the career data
+repo under `applications/main-resume/`; rebuild there and drop the new PDF into
+`public/resume/Muhammad_Roshaan_Resume.pdf`.
 
 ## Local dev
 
@@ -57,24 +63,10 @@ npm run build      # production build (static-prerenders all routes)
 
 ## Deploy (Vercel)
 
-Two options:
+The project auto-deploys to Vercel from `main`; the custom domain is
+`m-roshaan.me` (see `CNAME`). Manual deploys use:
 
-**A. One CLI command (needs a one-time login):**
 ```bash
-npx vercel login           # opens a browser on GitHub — the only manual step
-npm run deploy:preview     # first deploy (gets a preview URL + links the project)
-npm run deploy             # then deploy to production
+npm run deploy:preview   # preview URL
+npm run deploy           # production
 ```
-
-**B. Auto-deploy on every push (CI):**
-A workflow is already in `.github/workflows/deploy.yml`. Enable it by adding
-three repo secrets (Settings → Secrets → Actions) and pushing to `main`:
-
-| Secret            | How to get it                                                        |
-| ----------------- | -------------------------------------------------------------------- |
-| `VERCEL_TOKEN`    | https://vercel.com/account/tokens → create token                     |
-| `VERCEL_ORG_ID`   | `vercel link` → `cat .vercel/project.json` (team ID)                 |
-| `VERCEL_PROJECT_ID` | `vercel link` → `cat .vercel/project.json` (project ID)           |
-
-After the first deploy, update the `metadataBase` / `openGraph` URLs in
-`app/layout.tsx` to the real domain.

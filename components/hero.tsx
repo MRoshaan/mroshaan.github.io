@@ -14,11 +14,11 @@ const fade = (delay: number) => ({
 });
 
 const TYPING_LINES = [
-  ["$", "docker compose up --scale worker=4"],
-  ["▶ ", "scheduler ready  ·  redis connected"],
-  ["▶ ", "etl: 540,000 records → postgres (ok)"],
-  ["▶ ", "lock/key redis:seat:42 acquired"],
-  ["✔", "commit applied — 0 oversell"],
+  ["$", "python run_eval.py --sweep 160"],
+  ["▶ ", "canonical checksums 80/80 stable"],
+  ["▶ ", "nf4 misses 6.0% → 17.3% (p=0.0001)"],
+  ["▶ ", "0 oversell · 0 data loss"],
+  ["✔", "2 accepted @ NeurIPS 2026 workshops"],
 ];
 
 export function Hero() {
@@ -30,7 +30,7 @@ export function Hero() {
         {/* copy */}
         <div className="max-w-3xl">
           <motion.p {...fade(0)} className="eyebrow mb-6 text-accent">
-            Muhammad Roshaan · Backend &amp; Data Engineer
+            Muhammad Roshaan · AI Safety &amp; Systems Engineer
           </motion.p>
 
           <motion.h1
@@ -41,7 +41,7 @@ export function Hero() {
               className="from-accent to-accent-hover"
               tones="from-accent to-accent-hover"
             >
-              Backend&nbsp;data,
+              Rigorous&nbsp;evals.
             </GradientAccent>
             <br />
             <TextEffect
@@ -51,7 +51,7 @@ export function Hero() {
               delay={0.5}
               className="block"
             >
-              engineered to ship.
+              Resilient systems.
             </TextEffect>
           </motion.h1>
 
@@ -59,8 +59,9 @@ export function Hero() {
             {...fade(0.16)}
             className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground"
           >
-            Final-year CS at SSUET building systems that survive contention: distributed
-            locks, ETL pipelines at 540K+ rows, and real-time ML inference you can audit.
+            Final-year CS at SSUET. First author of an accepted SLM-Agents paper
+            at NeurIPS 2026, building Bayesian evaluation tooling and backend
+            systems that hold under contention.
           </motion.p>
 
           <motion.div {...fade(0.24)} className="mt-9 flex flex-wrap items-center gap-3">
@@ -108,7 +109,7 @@ export function Hero() {
               <span key={c} className="size-2.5 rounded-full opacity-80" style={{ background: c }} />
             ))}
             <span className="ml-2 flex-1 text-center font-mono text-[11px] text-muted-foreground">
-              dispatch — production
+              eval-runner · production
             </span>
           </div>
           <div className="p-5 font-mono text-[13px] leading-7">
@@ -135,9 +136,9 @@ export function Hero() {
       </div>
 
       <a
-        href="#projects"
+        href="#research"
         className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 text-muted-foreground transition-colors hover:text-accent md:flex"
-        aria-label="Scroll to work"
+        aria-label="Scroll to research"
       >
         <ArrowUpRight className="size-5 rotate-90" />
       </a>

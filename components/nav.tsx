@@ -8,9 +8,11 @@ import { CommandMenu } from "@/components/ui/command-menu";
 import { cn } from "@/lib/utils";
 
 const links = [
+  { label: "Research", href: "/#research" },
   { label: "Work", href: "/#projects" },
   { label: "Skills", href: "/#skills" },
-  { label: "Path", href: "/#experience" },
+  { label: "Experience", href: "/#experience" },
+  { label: "Education", href: "/#education" },
   { label: "Contact", href: "/#contact" },
 ];
 

@@ -4,6 +4,7 @@ import * as React from "react";
 import { Dialog } from "radix-ui";
 import { Search } from "lucide-react";
 import { projects } from "@/lib/projects";
+import { research } from "@/lib/research";
 import { skillGroups } from "@/lib/skills";
 import { cn } from "@/lib/utils";
 
@@ -32,6 +33,13 @@ export function CommandMenu() {
   }, []);
 
   const items: Item[] = React.useMemo(() => {
+    const researchItems: Item[] = research.map((r) => ({
+      id: `research-${r.slug}`,
+      label: r.name,
+      hint: r.venue,
+      href: "/#research",
+      group: "Research",
+    }));
     const projectItems: Item[] = projects.map((p) => ({
       id: `proj-${p.slug}`,
       label: p.name,
@@ -48,7 +56,7 @@ export function CommandMenu() {
         group: "Skills",
       }))
     );
-    return [...projectItems, ...skillItems];
+    return [...researchItems, ...projectItems, ...skillItems];
   }, []);
 
   const filtered = items.filter((i) => {

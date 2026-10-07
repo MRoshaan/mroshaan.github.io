@@ -1,9 +1,9 @@
 export function StatsStrip() {
   const stats = [
-    { value: "540K+", label: "records through the ETL pipeline" },
-    { value: "0.9995", label: "ROC AUC on a 1.27M-sample fraud set" },
-    { value: "6", label: "systems shipped end-to-end" },
-    { value: "3.81", label: "CGPA · BS Computer Science" },
+    { value: "2", label: "accepted papers at NeurIPS 2026 workshops" },
+    { value: "4", label: "AI safety and LLM evaluation contributions" },
+    { value: "3.80", label: "CGPA · BS Computer Science, SSUET" },
+    { value: "6", label: "certifications from Udemy, DataCamp, and Cisco" },
   ];
 
   return (
@@ -14,7 +14,7 @@ export function StatsStrip() {
             <p className="display text-4xl font-bold text-accent sm:text-5xl">
               {s.value}
             </p>
-            <p className="mt-2 max-w-[16ch] text-sm leading-snug text-muted-foreground">
+            <p className="mt-2 max-w-[18ch] text-sm leading-snug text-muted-foreground">
               {s.label}
             </p>
           </div>

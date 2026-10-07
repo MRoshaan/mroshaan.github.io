@@ -1,20 +1,22 @@
 export function TechMarquee() {
   const items = [
     "Python",
+    "Go",
     "FastAPI",
+    "pytest",
+    "GitHub Actions",
+    "OpenTelemetry",
+    "vLLM",
+    "Qwen3",
+    "Gemini",
     "PostgreSQL",
     "Redis",
     "Celery",
     "Docker",
     "SQLAlchemy",
     "MongoDB",
-    "Supabase",
     "scikit-learn",
     "XGBoost",
-    "LightGBM",
-    "Next.js",
-    "Flutter",
-    "Java / Spring Boot",
     "Power BI",
   ];
 

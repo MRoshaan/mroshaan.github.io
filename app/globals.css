@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  /* light — warm cream editorial */
+  /* light: warm cream editorial */
   --background: #fffdef;
   --surface: #fdfbf3;
   --card: #ffffff;

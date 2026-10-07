@@ -19,7 +19,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const project = getProject(slug);
   return {
-    title: project ? `${project.name} — case study` : "Project",
+    title: project ? `${project.name} case study` : "Project",
     description: project?.summary,
   };
 }
@@ -52,7 +52,7 @@ export default async function ProjectPage({
         <header className="mt-10 border-b border-border pb-10">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <p className="eyebrow text-accent">
-              Case study — {project.category}
+              Case study · {project.category}
             </p>
             <a
               href={project.repo}
@@ -73,6 +73,11 @@ export default async function ProjectPage({
           </p>
 
           <div className="mt-6 flex flex-wrap gap-1.5">
+            {project.status && (
+              <Badge variant="default" className="border-accent/30">
+                {project.status}
+              </Badge>
+            )}
             {project.stack.map((t) => (
               <Badge key={t} variant="secondary" className="border-border">
                 {t}
@@ -116,7 +121,7 @@ export default async function ProjectPage({
             </ul>
           </Block>
 
-          <Block index="03" title="Outcomes">
+          <Block index="03" title={project.outcomeTitle ?? "Outcomes"}>
             <ul className="space-y-4">
               {project.outcome.map((o, i) => (
                 <li key={i} className="flex gap-4">
@@ -125,6 +130,11 @@ export default async function ProjectPage({
                 </li>
               ))}
             </ul>
+            {project.note && (
+              <p className="mt-5 max-w-2xl rounded-lg border border-border bg-muted/30 px-4 py-3 text-sm leading-relaxed text-muted-foreground">
+                {project.note}
+              </p>
+            )}
           </Block>
         </div>
 

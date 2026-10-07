@@ -29,7 +29,7 @@ export function SeatVaultDiagram() {
         </motion.div>
 
         <motion.div variants={variants} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }}>
-          <Node title="Redis distributed lock" sub="SET key NX EX — hold the seat key" tone="accent" />
+          <Node title="Redis distributed lock" sub="SET key NX EX · hold the seat key" tone="accent" />
         </motion.div>
 
         <motion.div variants={variants} custom={2} initial="hidden" whileInView="show" viewport={{ once: true }}>
@@ -50,7 +50,7 @@ export function SeatVaultDiagram() {
 
       <p className="mt-6 font-mono text-[11px] leading-relaxed text-muted-foreground">
         Get the distributed lock first, then the row lock. Commit atomically, release in
-        reverse order — the two layers never fight each other.
+        reverse order so the two layers never fight each other.
       </p>
     </div>
   );

@@ -16,14 +16,15 @@ export function Footer() {
 
       <div className="relative mx-auto max-w-3xl px-6 text-center">
         <p className="eyebrow mb-4 text-accent">
-          04 — Contact
+          06 · Contact
         </p>
         <h2 className="display text-4xl font-semibold tracking-tight sm:text-6xl">
-          Let&apos;s build something that survives.
+          Let&apos;s measure what matters.
         </h2>
         <p className="mx-auto mt-5 max-w-lg leading-relaxed text-muted-foreground">
-          Open to backend and data engineering internships and junior roles. If
-          that&apos;s you, my inbox is open.
+          Open to AI safety and LLM evaluation research internships, plus
+          backend and data engineering roles. Based in {site.location}, working
+          remotely.
         </p>
 
         <a

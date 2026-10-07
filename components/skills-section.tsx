@@ -8,10 +8,10 @@ export function SkillsSection() {
     <section id="skills" className="border-b border-border py-28">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
         <SectionHeading
-          index="02"
+          index="03"
           eyebrow="Capabilities"
           title="The stack I reach for"
-          blurb="Languages, frameworks, and runtimes, grouped by where they earn their keep in my work."
+          blurb="Languages, frameworks, and methods, grouped by where they earn their keep in my work."
         />
         <AnimatedGroup preset="slide" className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {skillGroups.map((g, i) => (
