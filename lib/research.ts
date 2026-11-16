@@ -8,6 +8,7 @@ export type ResearchEntry = {
   role: string;
   period: string;
   summary: string;
+  result: string;
   findings: string[];
   stack: string[];
   repo?: string;
@@ -27,6 +28,8 @@ export const research: ResearchEntry[] = [
     period: "Jul 2026 - Oct 2026",
     summary:
       "A pre-registered audit of how 4-bit NF4 quantization changes the distribution of tool-calling errors in small models, instead of reporting a single accuracy number.",
+    result:
+      "NF4 nearly tripled missed required tool calls at 1.7B (6.0% to 17.3%) while 4B showed a powered null.",
     findings: [
       "Qwen3-1.7B missed required tool calls nearly tripled under NF4 (6.0% to 17.3%, paired McNemar p=0.0001), and 13 of the 26 NF4 misses were correct under FP16.",
       "Qwen3-4B showed a powered null, and a direct size x format interaction test confirmed the asymmetry (-11.3pp, 95% CI [-20.0, -3.3], p=0.006).",
@@ -48,6 +51,8 @@ export const research: ResearchEntry[] = [
     period: "Aug 2026 - Dec 2026",
     summary:
       "A controlled simulation testing whether shared-memory coalitions defeat honeytoken decoys in multi-agent LLM teams, run fully locally with no real credentials or network egress.",
+    result:
+      "Brokered containment held post-trigger harm at zero (95% CI [0, 0]) with 0.80 trap activation.",
     findings: [
       "Brokered containment pinned post-trigger harm at exactly zero (95% CI [0, 0]) with the highest trap activation (0.80), across Qwen3-4B, Qwen3-8B, and Gemma3-4B.",
       "Shared-memory coalitions pooled decoy fingerprints (contagion up to 16) and raised mean harm over baseline.",
@@ -65,6 +70,8 @@ export const research: ResearchEntry[] = [
     period: "Aug 2026",
     summary:
       "Collaborative research on CausalTrace, an order-invariant verification engine for concurrent multi-agent traces: a Go canonicalizer, a Python serialization sweep, and an LLM-judge study.",
+    result:
+      "Deterministic verdicts never flipped across serializations. Live judges flipped on 55% to 75% of identical facts.",
     findings: [
       "Built a Go canonical causal-DAG renderer with byte-stable checksums and a 160-cell sweep over 40 seeded traces across 4 fault conditions.",
       "Deterministic verdicts were order-invariant (0% flips across topological serializations), while live LLM judges flipped on 55% to 75% of identical facts (cross-family kappa 0.08 to 0.29).",
@@ -85,6 +92,8 @@ export const research: ResearchEntry[] = [
     period: "Aug 2026",
     summary:
       "An RLVR safety-evaluation study that separates changed behavior from changed measurement along a GRPO training trajectory (Tulu 3.1 8B, 12 pinned checkpoints, 6,912 structured responses).",
+    result:
+      "The safety score stayed inside its ±0.10 band while measurement properties drifted (permutation invariance -0.146).",
     findings: [
       "The marginalized safety score never left its prespecified ±0.10 band, while measurement properties drifted (permutation invariance -0.146, answer-order range +0.188).",
       "The study attributes the change to measurement drift rather than safety drift.",

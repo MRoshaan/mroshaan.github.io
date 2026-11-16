@@ -1,151 +1,63 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { Mail, FileText, ArrowUpRight } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "@/components/icons";
+import { ArrowUpRight } from "lucide-react";
+import { QuantizationFigure } from "@/components/quantization-figure";
 import { site } from "@/lib/site";
-import { TextEffect } from "@/components/ui/text-effect";
-import { GradientAccent } from "@/components/ui/gradient-accent";
 
-const fade = (delay: number) => ({
-  initial: { opacity: 0, y: 16 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as const, delay },
-});
-
-const TYPING_LINES = [
-  ["$", "python run_eval.py --sweep 160"],
-  ["▶ ", "canonical checksums 80/80 stable"],
-  ["▶ ", "nf4 misses 6.0% → 17.3% (p=0.0001)"],
-  ["▶ ", "0 oversell · 0 data loss"],
-  ["✔", "2 accepted @ NeurIPS 2026 workshops"],
+const links = [
+  { label: "Email", href: `mailto:${site.email}`, external: false },
+  { label: "GitHub", href: site.github, external: true },
+  { label: "LinkedIn", href: site.linkedin, external: true },
+  { label: "Résumé", href: site.resume, external: true },
 ];
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden border-b border-border bg-grid-soft">
-      <div className="pointer-events-none absolute -top-32 right-0 h-[420px] w-[520px] rounded-full bg-[radial-gradient(closest-side,rgba(197,0,0,0.14),transparent)] blur-3xl" />
+    <section id="top" className="border-b border-rule">
+      <div className="mx-auto grid max-w-6xl gap-12 px-6 py-14 md:py-20 lg:min-h-[calc(100vh-3.5rem)] lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center lg:gap-16 lg:px-8">
+        <div className="rise">
+          <p className="font-mono text-[11px] text-ink-3">
+            Muhammad Roshaan · AI safety and systems engineer
+          </p>
 
-      <div className="relative mx-auto grid max-w-6xl gap-14 px-6 py-24 md:grid-cols-[1.2fr_0.8fr] md:items-center md:py-32 lg:px-8">
-        {/* copy */}
-        <div className="max-w-3xl">
-          <motion.p {...fade(0)} className="eyebrow mb-6 text-accent">
-            <span className="max-sm:hidden">Muhammad Roshaan · </span>
-            AI Safety &amp; Systems Engineer
-          </motion.p>
+          <h1 className="mt-6 max-w-xl text-balance text-[clamp(2.4rem,4.6vw,3.75rem)] leading-[1.06] tracking-[-0.02em] text-ink">
+            I evaluate language models and build the systems around them.
+          </h1>
 
-          <motion.h1
-            {...fade(0.08)}
-            className="display text-[2.75rem] font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl"
-          >
-            <GradientAccent
-              className="from-accent to-accent-hover"
-              tones="from-accent to-accent-hover"
-            >
-              Rigorous&nbsp;evals.
-            </GradientAccent>
-            <br />
-            <TextEffect
-              as="span"
-              per="word"
-              preset="slide"
-              delay={0.5}
-              className="block"
-            >
-              Resilient systems.
-            </TextEffect>
-          </motion.h1>
+          <p className="mt-6 max-w-lg text-[17px] leading-7 text-ink-2">
+            Final-year CS at SSUET. First author of an accepted SLM-Agents
+            paper at NeurIPS 2026. I currently evaluate scientific reasoning at
+            Turing and contribute to RLVR safety evals with SPAR AI.
+          </p>
 
-          <motion.p
-            {...fade(0.16)}
-            className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground"
-          >
-            Final-year CS at SSUET. First author of an accepted SLM-Agents paper
-            at NeurIPS 2026, building Bayesian evaluation tooling and backend
-            systems that hold under contention.
-          </motion.p>
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-[13.5px]">
+            {links.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target={link.external ? "_blank" : undefined}
+                rel={link.external ? "noreferrer" : undefined}
+                className={
+                  link.label === "Email"
+                    ? "inline-flex items-center gap-1 text-ink underline decoration-rule-strong decoration-1 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+                    : "inline-flex items-center gap-1 text-ink-2 transition-colors hover:text-accent"
+                }
+              >
+                {link.label}
+                {link.external && (
+                  <ArrowUpRight className="size-3.5" strokeWidth={1.5} />
+                )}
+              </a>
+            ))}
+          </div>
 
-          <motion.div
-            {...fade(0.24)}
-            className="mt-9 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:items-center"
-          >
-            <a
-              href={site.github}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-accent px-4 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent-hover sm:justify-start sm:px-5"
-            >
-              <GithubIcon className="size-4" /> GitHub
-            </a>
-            <a
-              href={site.resume}
-              target="_blank"
-              className="inline-flex h-11 items-center justify-center gap-2 rounded-lg border border-border bg-card px-4 text-sm font-medium text-foreground transition-colors hover:border-accent/60 hover:text-accent sm:justify-start sm:px-5"
-            >
-              <FileText className="size-4" /> Résumé
-            </a>
-            <a
-              href={`mailto:${site.email}`}
-              className="inline-flex h-11 items-center justify-center gap-2 rounded-lg border border-border bg-card px-4 text-sm text-muted-foreground transition-colors hover:border-accent/50 hover:text-accent sm:border-0 sm:bg-transparent sm:px-3"
-            >
-              <Mail className="size-4" /> Email
-            </a>
-            <a
-              href={site.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex h-11 items-center justify-center gap-2 rounded-lg border border-border bg-card px-4 text-sm text-muted-foreground transition-colors hover:border-accent/50 hover:text-accent sm:border-0 sm:bg-transparent sm:px-3"
-            >
-              <LinkedinIcon className="size-4" /> LinkedIn
-            </a>
-          </motion.div>
+          <p className="mt-10 font-mono text-[11px] text-ink-3">
+            {site.location} · Open to research internships
+          </p>
         </div>
 
-        {/* console panel */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          className="panel glow-accent hidden overflow-hidden md:block"
-        >
-          <div className="flex items-center gap-2 border-b border-border px-4 py-3">
-            {["#ff5f57", "#febc2e", "#28c840"].map((c) => (
-              <span key={c} className="size-2.5 rounded-full opacity-80" style={{ background: c }} />
-            ))}
-            <span className="ml-2 flex-1 text-center font-mono text-[11px] text-muted-foreground">
-              eval-runner · production
-            </span>
-          </div>
-          <div className="p-5 font-mono text-[13px] leading-7">
-            {TYPING_LINES.map(([token, text], i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1 + i * 0.5 }}
-                className="flex gap-2"
-              >
-                <span className={token === "✔" ? "text-accent" : "text-accent/80"}>{token}</span>
-                <span className={token === "✔" ? "text-foreground" : "text-[--copy]"}>{text}</span>
-              </motion.div>
-            ))}
-            <motion.span
-              initial={{ opacity: 0 }}
-              animate={{ opacity: [0, 1, 0] }}
-              transition={{ repeat: Infinity, duration: 1 }}
-              className="inline-block h-4 w-2 bg-accent align-middle"
-            />
-          </div>
-        </motion.div>
+        <div className="rise-late">
+          <QuantizationFigure />
+        </div>
       </div>
-
-      <a
-        href="#research"
-        className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 text-muted-foreground transition-colors hover:text-accent md:flex"
-        aria-label="Scroll to research"
-      >
-        <ArrowUpRight className="size-5 rotate-90" />
-      </a>
     </section>
   );
 }

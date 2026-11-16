@@ -1,24 +1,31 @@
 import type { Metadata } from "next";
-import { Figtree, Roboto_Flex, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
+import {
+  IBM_Plex_Mono,
+  IBM_Plex_Sans,
+  Source_Serif_4,
+} from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/nav";
 import { ThemeProvider } from "@/components/theme-provider";
 import { site } from "@/lib/site";
 
-const figtree = Figtree({
-  variable: "--font-figtree",
+const serif = Source_Serif_4({
+  variable: "--font-source-serif",
   subsets: ["latin"],
   display: "swap",
 });
 
-const robotoFlex = Roboto_Flex({
-  variable: "--font-roboto-flex",
+const sans = IBM_Plex_Sans({
+  variable: "--font-plex-sans",
+  weight: ["400", "500"],
   subsets: ["latin"],
   display: "swap",
 });
 
-const mono = JetBrains_Mono({
-  variable: "--font-mono",
+const mono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
+  weight: ["400"],
   subsets: ["latin"],
   display: "swap",
 });
@@ -26,16 +33,15 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://m-roshaan.me"),
   title: {
-    default: `${site.name} · AI Safety & Systems Engineer`,
+    default: `${site.name} · AI safety and systems engineer`,
     template: `%s · ${site.name}`,
   },
   description:
-    "Muhammad Roshaan, AI safety and systems engineer in Karachi. Accepted NeurIPS 2026 workshop papers on LLM evaluation, plus concurrency and data systems built to hold under load.",
-  icons: { icon: "/favicon.jpeg" },
+    "Muhammad Roshaan evaluates language models and builds backend systems. Accepted NeurIPS 2026 workshop papers on tool-calling reliability and agent security.",
   openGraph: {
-    title: `${site.name} · AI Safety & Systems Engineer`,
+    title: `${site.name} · AI safety and systems engineer`,
     description:
-      "AI safety and systems engineering. Published LLM evaluation research and backend systems built to hold under load.",
+      "LLM evaluation research and backend systems built to hold under load.",
     url: "https://m-roshaan.me",
     siteName: site.name,
     type: "website",
@@ -46,17 +52,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${figtree.variable} ${robotoFlex.variable} ${mono.variable} h-full antialiased`}
+      className={`${serif.variable} ${sans.variable} ${mono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('theme');var d=t==='dark';if(d)document.documentElement.classList.add('dark')}catch(e){}})();`,
-          }}
-        />
-      </head>
-      <body className="min-h-full flex flex-col bg-background text-foreground">
+      <body className="min-h-full flex flex-col bg-paper text-ink">
+        <Script src="/theme.js" strategy="beforeInteractive" />
         <ThemeProvider>
           <Nav />
           <main className="flex-1">{children}</main>

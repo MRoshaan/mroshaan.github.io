@@ -1,41 +1,31 @@
+import { SectionHeading } from "@/components/section-heading";
 import { skillGroups } from "@/lib/skills";
-import { SectionHeading } from "@/components/projects-section";
-import { Badge } from "@/components/ui/badge";
-import { AnimatedGroup } from "@/components/ui/animated-group";
 
 export function SkillsSection() {
   return (
-    <section id="skills" className="border-b border-border py-28">
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+    <section id="skills" className="scroll-mt-14 border-b border-rule">
+      <div className="mx-auto max-w-6xl px-6 py-16 lg:px-8 lg:py-20">
         <SectionHeading
           index="03"
-          eyebrow="Capabilities"
-          title="The stack I reach for"
-          blurb="Languages, frameworks, and methods, grouped by where they earn their keep in my work."
+          title="Skills"
+          note="8 groups"
         />
-        <AnimatedGroup preset="slide" className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {skillGroups.map((g, i) => (
+
+        <dl>
+          {skillGroups.map((group) => (
             <div
-              key={g.title}
-              className="group panel relative overflow-hidden p-6 transition-colors hover:border-accent/30"
+              key={group.title}
+              className="grid gap-1 border-b border-rule py-3 sm:grid-cols-[200px_minmax(0,1fr)] sm:gap-6"
             >
-              <span className="pointer-events-none absolute right-5 top-4 font-mono text-xs text-muted-foreground/40">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <h3 className="display flex items-center gap-2 text-lg font-semibold text-accent">
-                {g.title}
-              </h3>
-              <p className="mt-1.5 text-sm text-muted-foreground">{g.blurb}</p>
-              <div className="mt-5 flex flex-wrap gap-1.5">
-                {g.items.map((s) => (
-                  <Badge key={s} variant="outline" className="border-border text-foreground">
-                    {s}
-                  </Badge>
-                ))}
-              </div>
+              <dt className="text-[13px] font-medium leading-6 text-ink">
+                {group.title}
+              </dt>
+              <dd className="text-[14px] leading-6 text-ink-2">
+                {group.items.join(", ")}
+              </dd>
             </div>
           ))}
-        </AnimatedGroup>
+        </dl>
       </div>
     </section>
   );

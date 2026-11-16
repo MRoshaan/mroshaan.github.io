@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { GithubIcon } from "@/components/icons";
 import { getProject, projects } from "@/lib/projects";
-import { Badge } from "@/components/ui/badge";
 import { SeatVaultDiagram } from "@/components/diagrams/seatvault-diagram";
 import { ETLDiagram } from "@/components/diagrams/etl-diagram";
 
@@ -33,142 +32,138 @@ export default async function ProjectPage({
   const project = getProject(slug);
   if (!project) notFound();
 
-  return (
-    <article className="relative mx-auto max-w-4xl overflow-hidden px-6 py-20 md:py-28">
-      {/* ambient glow */}
-      <div className="pointer-events-none absolute -top-40 left-1/2 h-[420px] w-[680px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(197,0,0,0.14),transparent)] blur-3xl" />
+  const index = projects.findIndex((p) => p.slug === project.slug);
+  const next = projects[(index + 1) % projects.length];
 
-      <div className="relative">
-        {/* back */}
+  return (
+    <article className="mx-auto max-w-4xl px-6 py-12 lg:py-16">
+      <Link
+        href="/#projects"
+        className="inline-flex items-center gap-2 font-mono text-[10px] text-ink-3 transition-colors hover:text-ink"
+      >
+        <ArrowLeft className="size-3" strokeWidth={1.5} />
+        All work
+      </Link>
+
+      <header className="mt-8 border-b border-rule pb-8">
+        <p className="font-mono text-[10px] text-ink-3">{project.category}</p>
+        <h1 className="mt-4 text-[clamp(2.2rem,5vw,3.4rem)] leading-[1.05] tracking-[-0.02em] text-ink">
+          {project.name}
+        </h1>
+        <p className="mt-3 max-w-2xl text-[17px] leading-7 text-ink-2">
+          {project.tagline}
+        </p>
+
+        <p className="mt-5 font-mono text-[10px] leading-5 text-ink-3">
+          {project.stack.join(" · ")}
+        </p>
+
+        <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-[12.5px]">
+          <a
+            href={project.repo}
+            target="_blank"
+            rel="noreferrer"
+            className="link-quiet inline-flex items-center gap-1.5"
+          >
+            <GithubIcon className="size-3" />
+            Repository
+            <ArrowUpRight className="size-3" strokeWidth={1.5} />
+          </a>
+          {project.status && (
+            <span className="font-mono text-[10px] text-ink-3">
+              {project.status}
+            </span>
+          )}
+        </div>
+      </header>
+
+      {project.diagram && (
+        <div className="mt-10">
+          {project.diagram === "seatvault" ? (
+            <SeatVaultDiagram />
+          ) : (
+            <ETLDiagram />
+          )}
+        </div>
+      )}
+
+      <div className="mt-12 space-y-10">
+        <Block label="Problem">
+          <p className="max-w-2xl text-[15.5px] leading-7 text-ink-2">
+            {project.problem}
+          </p>
+        </Block>
+
+        <Block label="Approach">
+          <ol className="max-w-2xl space-y-3">
+            {project.approach.map((step, i) => (
+              <li key={step} className="flex gap-4">
+                <span className="pt-0.5 font-mono text-[10px] text-ink-3">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="text-[15.5px] leading-7 text-ink-2">
+                  {step}
+                </span>
+              </li>
+            ))}
+          </ol>
+        </Block>
+
+        <Block label={project.outcomeTitle ?? "Outcome"}>
+          <ul className="max-w-2xl space-y-3">
+            {project.outcome.map((outcome) => (
+              <li
+                key={outcome}
+                className="text-[15.5px] leading-7 text-ink-2"
+              >
+                <span className="mr-2 text-ink-3">·</span>
+                {outcome}
+              </li>
+            ))}
+          </ul>
+          {project.note && (
+            <p className="mt-5 max-w-2xl border-l-2 border-rule-strong pl-4 text-[13px] leading-6 text-ink-3">
+              {project.note}
+            </p>
+          )}
+        </Block>
+      </div>
+
+      <div className="mt-14 flex flex-wrap items-center justify-between gap-4 border-t border-rule pt-6">
         <Link
           href="/#projects"
-          className="group eyebrow inline-flex items-center gap-3 text-muted-foreground transition-colors hover:text-accent"
+          className="inline-flex items-center gap-2 font-mono text-[10px] text-ink-3 transition-colors hover:text-ink"
         >
-          <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" />
-          All projects
+          <ArrowLeft className="size-3" strokeWidth={1.5} />
+          Back to all work
         </Link>
-
-        {/* header */}
-        <header className="mt-10 border-b border-border pb-10">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <p className="eyebrow text-accent">
-              Case study · {project.category}
-            </p>
-            <a
-              href={project.repo}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-accent"
-            >
-              <GithubIcon className="size-4" /> Repo
-              <ArrowUpRight className="size-3.5" />
-            </a>
-          </div>
-
-          <h1 className="display mt-6 text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl">
-            {project.name}
-          </h1>
-          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            {project.tagline}
-          </p>
-
-          <div className="mt-6 flex flex-wrap gap-1.5">
-            {project.status && (
-              <Badge variant="default" className="border-accent/30">
-                {project.status}
-              </Badge>
-            )}
-            {project.stack.map((t) => (
-              <Badge key={t} variant="secondary" className="border-border">
-                {t}
-              </Badge>
-            ))}
-          </div>
-        </header>
-
-        {/* diagram */}
-        {project.diagram && (
-          <section className="mt-12">
-            <h2 className="eyebrow mb-4 text-muted-foreground">
-              How it works
-            </h2>
-            {project.diagram === "seatvault" ? (
-              <SeatVaultDiagram />
-            ) : (
-              <ETLDiagram />
-            )}
-          </section>
-        )}
-
-        {/* body org */}
-        <div className="mt-14 space-y-14">
-          <Block index="01" title="The problem">
-            <p className="max-w-2xl leading-relaxed text-muted-foreground">
-              {project.problem}
-            </p>
-          </Block>
-
-          <Block index="02" title="Approach">
-            <ul className="space-y-4">
-              {project.approach.map((a, i) => (
-                <li key={i} className="flex gap-4">
-                  <span className="pt-px font-mono text-xs text-accent">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="leading-relaxed text-muted-foreground">{a}</span>
-                </li>
-              ))}
-            </ul>
-          </Block>
-
-          <Block index="03" title={project.outcomeTitle ?? "Outcomes"}>
-            <ul className="space-y-4">
-              {project.outcome.map((o, i) => (
-                <li key={i} className="flex gap-4">
-                  <span className="mt-2 size-1.5 shrink-0 rounded-full bg-accent" />
-                  <span className="leading-relaxed text-muted-foreground">{o}</span>
-                </li>
-              ))}
-            </ul>
-            {project.note && (
-              <p className="mt-5 max-w-2xl rounded-lg border border-border bg-muted/30 px-4 py-3 text-sm leading-relaxed text-muted-foreground">
-                {project.note}
-              </p>
-            )}
-          </Block>
-        </div>
-
-        {/* footer cta */}
-        <div className="mt-20 border-t border-border pt-8">
-          <Link
-            href="/#projects"
-            className="group eyebrow inline-flex items-center gap-3 text-muted-foreground transition-colors hover:text-accent"
-          >
-            <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" />
-            Back to all projects
-          </Link>
-        </div>
+        <Link
+          href={`/projects/${next.slug}`}
+          className="group inline-flex items-baseline gap-2 text-[15px] text-ink transition-colors hover:text-accent"
+        >
+          <span className="font-mono text-[10px] text-ink-3">Next</span>
+          {next.name}
+          <ArrowUpRight
+            className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            strokeWidth={1.5}
+          />
+        </Link>
       </div>
     </article>
   );
 }
 
 function Block({
-  index,
-  title,
+  label,
   children,
 }: {
-  index: string;
-  title: string;
+  label: string;
   children: React.ReactNode;
 }) {
   return (
-    <section>
-      <h2 className="display mb-5 flex items-baseline gap-4 text-2xl font-semibold tracking-tight">
-        <span className="font-mono text-sm text-accent">{index}</span>
-        {title}
-      </h2>
-      {children}
+    <section className="grid gap-3 border-t border-rule pt-6 md:grid-cols-[120px_minmax(0,1fr)] md:gap-6">
+      <h2 className="font-mono text-[10px] text-ink-3">{label}</h2>
+      <div>{children}</div>
     </section>
   );
 }
